@@ -1,46 +1,38 @@
 .card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.35);
 }
 
 .form-control {
   border-radius: 0.75rem;
   transition: all 0.2s ease;
 }
-
 .form-control:focus {
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+  border: 0 !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 202, 240, 0.25); 
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .form-label {
-  font-weight: 600;
-  color: #333;
+  color: #e9ecef;
 }
 
-.btn-primary {
-  background: linear-gradient(90deg, #0d6efd, #0b5ed7);
+.btn-info {
+  background-image: linear-gradient(90deg, #0dcaf0, #31d2f2);
   border: none;
-  border-radius: 0.75rem;
-  transition: all 0.3s ease;
 }
-
-.btn-primary:hover {
-  background: linear-gradient(90deg, #0b5ed7, #084298);
-  transform: scale(1.02);
-}
-
-.btn-primary:disabled {
-  background: #6c757d;
-  cursor: not-allowed;
+.btn-info:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(0.95);
 }
 
 .form-text.text-danger {
-  font-size: 0.85rem;
   font-weight: 500;
 }
 

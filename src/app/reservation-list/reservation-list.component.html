@@ -1,1 +1,72 @@
-<p>reservation-list works!</p>
+<app-home></app-home>
+
+<div class="container mt-5" data-bs-theme="dark">
+  <div class="card shadow-lg border-0 rounded-4 bg-dark text-light">
+    <div class="card-body p-4 p-md-5">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <h3 class="mb-0 text-info fw-bold">📋 Reservation List</h3>
+        <span class="badge bg-info text-dark rounded-pill px-3 py-2">
+          {{ reservations?.length || 0 }} total
+        </span>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle mb-0 rounded-4 overflow-hidden">
+          <thead class="bg-secondary">
+            <tr>
+              <th scope="col">Guest</th>
+              <th scope="col">Email</th>
+              <th scope="col">Room No.</th>
+              <th scope="col" class="text-nowrap">Check-In</th>
+              <th scope="col" class="text-nowrap">Check-Out</th>
+              <th scope="col" class="text-end">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let reservation of reservations">
+              <td class="fw-semibold">{{ reservation.guestName }}</td>
+
+              <td class="text-muted">
+                <span class="d-inline-block text-truncate" style="max-width: 220px;">
+                  {{ reservation.guestEmail }}
+                </span>
+              </td>
+
+              <td>
+                <span class="badge bg-info text-dark rounded-pill px-3 py-2">
+                  {{ reservation.roomNumber }}
+                </span>
+              </td>
+
+              <td class="text-nowrap">{{ reservation.checkInDate }}</td>
+              <td class="text-nowrap">{{ reservation.checkOutDate }}</td>
+
+              <td class="text-end">
+                <div class="btn-group" role="group" aria-label="Actions">
+                  <button
+                    class="btn btn-sm btn-outline-danger rounded-pill px-3"
+                    (click)="deleteReservation(reservation.id)">
+                    Delete
+                  </button>
+                  <a
+                    class="btn btn-sm btn-outline-secondary rounded-pill px-3"
+                    [routerLink]="['/edit', reservation.id]">
+                    Edit
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ng-template [ngIf]="!reservations?.length">
+        <div class="alert alert-info d-flex align-items-center gap-2 mt-4 mb-0 rounded-3" role="alert">
+          <span>ℹ️</span>
+          <span>No reservation available.</span>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
