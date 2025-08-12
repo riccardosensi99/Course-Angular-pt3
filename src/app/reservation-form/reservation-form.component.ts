@@ -48,10 +48,8 @@ export class ReservationFormComponent implements OnInit {
       let id = this.activatedRoute.snapshot.paramMap.get('id')
 
       if(id){
-        // Update
         this.reservationService.updateReservation(id, reservation)
       } else {
-        // New
         this.reservationService.addReservation(reservation)   
 
       }
